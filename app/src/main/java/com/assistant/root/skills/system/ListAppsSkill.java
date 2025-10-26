@@ -15,10 +15,35 @@ public class ListAppsSkill implements Skill {
 
     @Override
     public boolean matches(String normalizedCommand) {
-        return normalizedCommand.contains("list apps") ||
-                normalizedCommand.contains("show apps") ||
-                normalizedCommand.contains("what apps") ||
-                normalizedCommand.contains("available apps");
+        // Only match simple list apps commands without additional actions
+        if (!normalizedCommand.contains("list apps") &&
+                !normalizedCommand.contains("show apps") &&
+                !normalizedCommand.contains("what apps") &&
+                !normalizedCommand.contains("available apps")) {
+            return false;
+        }
+
+        // Check if command contains additional actions that should be handled by AI
+        String[] additionalActionKeywords = {
+                " and ", " then ", " after ", " wait ", " delay ",
+                " send ", " message ", " type ", " tap ", " press ",
+                " search ", " find ", " go to ", " click ", " scroll ",
+                " swipe ", " open ", " close ", " switch ", " turn "
+        };
+
+        for (String keyword : additionalActionKeywords) {
+            if (normalizedCommand.contains(keyword)) {
+                // This command has additional actions, let AI handle it
+                return false;
+            }
+        }
+
+        // Check if command is too long (likely complex)
+        if (normalizedCommand.length() > 25) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

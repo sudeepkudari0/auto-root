@@ -47,6 +47,9 @@ public class VoiceService extends Service {
     private Handler handler = new Handler();
     private Runnable commandTimeoutRunnable;
 
+    // Singleton instance
+    private static VoiceService instance;
+
     // State management
     private volatile boolean isServiceRunning = true;
     private volatile boolean isListening = false;
@@ -60,9 +63,22 @@ public class VoiceService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        // Set singleton instance
+        instance = this;
+
         executor = new CommandExecutor(this);
         assistantOverlay = new AssistantOverlay(this);
         floatingButton = new FloatingButton(this);
+
+        // Set up overlay callback for status updates
+        executor.setOverlayCallback(new CommandExecutor.OverlayUpdateCallback() {
+            @Override
+            public void updateOverlayMessage(String message) {
+                if (assistantOverlay != null) {
+                    assistantOverlay.updateMessage(message, false);
+                }
+            }
+        });
 
         createNotificationChannel();
         startForeground(NOTIF_ID, buildNotification("Ready"));
@@ -134,6 +150,9 @@ public class VoiceService extends Service {
         }
 
         handler.removeCallbacksAndMessages(null);
+
+        // Clear singleton instance
+        instance = null;
     }
 
     private void startListeningForCommand() {
@@ -336,7 +355,7 @@ public class VoiceService extends Service {
 
             // Show executing status after a brief moment
             handler.postDelayed(() -> {
-                assistantOverlay.updateMessage("Executing...", false);
+                assistantOverlay.updateMessage("Processing command...", false);
             }, 500);
 
             // Execute command
@@ -345,13 +364,8 @@ public class VoiceService extends Service {
             // Reset partial result
             lastPartialResult = "";
 
-            // Hide overlay after 3 seconds and reset
-            handler.postDelayed(() -> {
-                assistantOverlay.hide();
-                isListening = false;
-                updateNotification("Tap button to speak");
-                log("✓ Ready for next command (tap button)");
-            }, 3000);
+            // Hide overlay after processing is complete
+            hideOverlayWhenReady();
         }
 
         @Override
@@ -396,5 +410,39 @@ public class VoiceService extends Service {
             default:
                 return "Unknown error (" + error + ")";
         }
+    }
+
+    /**
+     * Hide overlay when AI processing is complete or after timeout
+     */
+    private void hideOverlayWhenReady() {
+        handler.postDelayed(() -> {
+            // Check if AI is still processing
+            if (executor.isAIProcessing()) {
+                // AI is still processing, check again in 1 second
+                hideOverlayWhenReady();
+                return;
+            }
+
+            // AI processing is complete, hide overlay
+            assistantOverlay.hide();
+            isListening = false;
+            updateNotification("Tap button to speak");
+            log("✓ Ready for next command (tap button)");
+        }, 1000); // Check every 1 second
+    }
+
+    /**
+     * Get singleton instance
+     */
+    public static VoiceService getInstance() {
+        return instance;
+    }
+
+    /**
+     * Get command executor
+     */
+    public CommandExecutor getCommandExecutor() {
+        return executor;
     }
 }

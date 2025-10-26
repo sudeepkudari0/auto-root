@@ -1,13 +1,18 @@
 package com.assistant.root.utils;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -24,6 +29,10 @@ import com.assistant.root.skills.system.SystemAppSkill;
 import com.assistant.root.skills.system.ToggleWiFiSkill;
 import com.assistant.root.skills.web.UrlOpenSkill;
 import com.assistant.root.ui.activities.MainActivity;
+import com.assistant.root.ai.AICommandGenerator;
+import com.assistant.root.ai.RootCommandExecutor;
+import com.assistant.root.skills.ai.AISkill;
+import com.assistant.root.cache.SmartCommandManager;
 
 /**
  * CommandExecutor - executes parsed commands either via root shell or Android
@@ -38,19 +47,44 @@ public class CommandExecutor {
 
     private final Context context;
     private final SkillRegistry skills;
+    private final AICommandGenerator aiGenerator;
+    private final ContactManager contactManager;
+    private final SmartCommandManager smartCommandManager;
+    private boolean isAIProcessing = false;
+
+    // Callback interface for overlay updates
+    public interface OverlayUpdateCallback {
+        void updateOverlayMessage(String message);
+    }
+
+    private OverlayUpdateCallback overlayCallback;
 
     public CommandExecutor(Context ctx) {
         this.context = ctx.getApplicationContext();
         this.skills = new SkillRegistry();
+        this.aiGenerator = new AICommandGenerator(ctx);
+        this.contactManager = new ContactManager(ctx);
+        this.smartCommandManager = new SmartCommandManager(ctx);
 
         // Register built-in skills. Add more skills by creating classes implementing
         // Skill.
-        this.skills.register(new OpenAppSkill());
-        this.skills.register(new WhatsAppSkill());
+        // this.skills.register(new OpenAppSkill());
+        // this.skills.register(new WhatsAppSkill()); // Temporarily disabled - let AI
+        // handle all messaging
         this.skills.register(new ToggleWiFiSkill());
-        this.skills.register(new ListAppsSkill());
-        this.skills.register(new SystemAppSkill());
-        this.skills.register(new UrlOpenSkill());
+        // this.skills.register(new ListAppsSkill());
+        // this.skills.register(new SystemAppSkill());
+        // this.skills.register(new UrlOpenSkill());
+        this.skills.register(new AISkill());
+
+        // Check and request contacts permission
+        checkContactsPermission();
+
+        // Log contact information for debugging
+        logContactInfo();
+
+        // Warm up cache in background
+        smartCommandManager.warmupCache();
     }
 
     /**
@@ -61,8 +95,11 @@ public class CommandExecutor {
             return;
         String cmd = commandText.toLowerCase();
 
+        log("🔍 Processing command: " + commandText);
+
         boolean handled = skills.execute(cmd, this);
         if (!handled) {
+            log("⚠️ No skill matched, using raw root execution");
             // Fallback to raw root execution
             executeRoot(commandText);
         }
@@ -364,6 +401,293 @@ public class CommandExecutor {
                 log("Error with am start fallback: " + e2.getMessage());
             }
         }
+    }
+
+    /**
+     * Generate and execute AI command from natural language input
+     * Uses SmartCommandManager for caching to eliminate delays
+     */
+    public void executeAICommand(String userInput) {
+        log("🤖 Processing AI command: " + userInput);
+        isAIProcessing = true;
+        updateOverlay("🤖 Processing...");
+
+        // Use SmartCommandManager for caching
+        smartCommandManager.getCommand(userInput, new SmartCommandManager.CommandCallback() {
+            @Override
+            public void onCommandReady(String command, boolean fromCache) {
+                if (fromCache) {
+                    log("⚡ Cache HIT! Instant execution");
+                    updateOverlay("⚡ Executing cached command...");
+                } else {
+                    log("✅ AI Generated Command:\n" + command);
+                    log("⚡ Executing AI-generated commands...");
+                    updateOverlay("⚡ Executing commands...");
+                }
+                executeAIGeneratedCommand(command);
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ AI Error: " + error);
+                updateOverlay("❌ AI Error");
+                isAIProcessing = false;
+            }
+        });
+    }
+
+    /**
+     * Execute AI-generated command using RootCommandExecutor
+     */
+    private void executeAIGeneratedCommand(String command) {
+        log("🔧 Executing AI-generated commands with root privileges...");
+        updateOverlay("🔧 Running commands...");
+
+        // Replace contact names with phone numbers
+        String processedCommand = replaceContactNames(command);
+        if (!processedCommand.equals(command)) {
+            log("📞 Replaced contact names with phone numbers");
+            log("📋 Processed command:\n" + processedCommand);
+        }
+
+        RootCommandExecutor.executeMultipleCommands(processedCommand, new RootCommandExecutor.ExecutionCallback() {
+            @Override
+            public void onSuccess(String output) {
+                log("✅ AI command execution completed successfully!");
+                if (!output.trim().isEmpty()) {
+                    log("📋 Command output:\n" + output);
+                }
+                log("🎉 Task completed!");
+                updateOverlay("✅ Done!");
+                isAIProcessing = false;
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ AI command execution failed: " + error);
+                log("💡 You may need to check root permissions or command syntax");
+                updateOverlay("❌ Failed");
+                isAIProcessing = false;
+            }
+        });
+    }
+
+    /**
+     * Replace contact names with phone numbers in commands
+     */
+    private String replaceContactNames(String command) {
+        if (command == null || command.isEmpty()) {
+            return command;
+        }
+
+        String processedCommand = command;
+
+        // Look for WhatsApp URL patterns with contact names
+        // Pattern: https://api.whatsapp.com/send?phone=CONTACT_NAME&text=MESSAGE
+        String pattern = "https://api\\.whatsapp\\.com/send\\?phone=([^&]+)&text=([^']+)";
+        java.util.regex.Pattern regex = java.util.regex.Pattern.compile(pattern);
+        java.util.regex.Matcher matcher = regex.matcher(processedCommand);
+
+        StringBuffer result = new StringBuffer();
+        while (matcher.find()) {
+            String contactName = matcher.group(1);
+            String message = matcher.group(2);
+
+            // Get phone number for the contact
+            String phoneNumber = contactManager.getPhoneNumber(contactName);
+
+            if (phoneNumber != null) {
+                // Replace contact name with phone number
+                String replacement = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message;
+                matcher.appendReplacement(result, java.util.regex.Matcher.quoteReplacement(replacement));
+                log("📞 Found contact: " + contactName + " -> " + phoneNumber);
+            } else {
+                // Keep original if contact not found
+                matcher.appendReplacement(result, matcher.group(0));
+                log("⚠️ Contact not found: " + contactName);
+            }
+        }
+        matcher.appendTail(result);
+
+        return result.toString();
+    }
+
+    /**
+     * Check if device has root access
+     */
+    public boolean hasRootAccess() {
+        return RootCommandExecutor.hasRootAccess();
+    }
+
+    /**
+     * Execute multiple commands using RootCommandExecutor
+     */
+    public void executeMultipleCommands(String commands) {
+        RootCommandExecutor.executeMultipleCommands(commands, new RootCommandExecutor.ExecutionCallback() {
+            @Override
+            public void onSuccess(String output) {
+                log("✅ Commands executed successfully!");
+                if (!output.trim().isEmpty()) {
+                    log("Output:\n" + output);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ Commands execution failed: " + error);
+            }
+        });
+    }
+
+    /**
+     * Test AI functionality with a simple command
+     */
+    public void testAI(String testInput) {
+        log("🧪 Testing AI with: " + testInput);
+
+        if (!aiGenerator.isModelAvailable()) {
+            log("❌ AI model not available for testing");
+            return;
+        }
+
+        aiGenerator.testAI(testInput, new AICommandGenerator.CommandCallback() {
+            @Override
+            public void onCommandGenerated(String command) {
+                log("🧪 AI Test Result: " + command);
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ AI Test Error: " + error);
+            }
+        });
+    }
+
+    /**
+     * Set callback for overlay updates
+     */
+    public void setOverlayCallback(OverlayUpdateCallback callback) {
+        this.overlayCallback = callback;
+    }
+
+    /**
+     * Update overlay message if callback is set
+     */
+    public void updateOverlay(String message) {
+        if (overlayCallback != null) {
+            overlayCallback.updateOverlayMessage(message);
+        }
+    }
+
+    /**
+     * Check if AI is currently processing
+     */
+    public boolean isAIProcessing() {
+        return isAIProcessing;
+    }
+
+    /**
+     * Check contacts permission and request if needed
+     */
+    private void checkContactsPermission() {
+        if (contactManager.hasContactsPermission()) {
+            log("✅ Contacts permission already granted");
+        } else {
+            log("⚠️ Contacts permission not granted - requesting permission...");
+            requestContactsPermission();
+        }
+    }
+
+    /**
+     * Request contacts permission
+     */
+    private void requestContactsPermission() {
+        if (context instanceof Activity) {
+            Activity activity = (Activity) context;
+            if (ContextCompat.checkSelfPermission(context,
+                    Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+
+                log("📞 Requesting contacts permission...");
+                ActivityCompat.requestPermissions(activity,
+                        new String[] { Manifest.permission.READ_CONTACTS },
+                        1001); // Request code for contacts
+            }
+        } else {
+            log("⚠️ Cannot request permission - context is not an Activity");
+        }
+    }
+
+    /**
+     * Handle permission result (call this from Activity's
+     * onRequestPermissionsResult)
+     */
+    public void onPermissionResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 1001) { // Contacts permission request
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                log("✅ Contacts permission granted! Loading contacts...");
+                contactManager.loadContactsAfterPermissionGranted();
+                logContactInfo();
+            } else {
+                log("❌ Contacts permission denied. Contact features will not work.");
+            }
+        }
+    }
+
+    /**
+     * Get contact information for debugging
+     */
+    public void logContactInfo() {
+        if (contactManager.hasContactsPermission()) {
+            int contactCount = contactManager.getContactCount();
+            log("📱 Total contacts loaded: " + contactCount);
+
+            if (contactCount > 0) {
+                List<String> contactNames = contactManager.getAllContactNames();
+                log("📋 Sample contacts: " + contactNames.subList(0, Math.min(5, contactNames.size())));
+            } else {
+                log("📋 No contacts found in device");
+            }
+        } else {
+            log("⚠️ Contacts permission not granted - cannot access contacts");
+        }
+    }
+
+    /**
+     * Log all contacts for debugging
+     */
+    public void logAllContacts() {
+        contactManager.logAllContacts();
+    }
+
+    /**
+     * Get cache statistics
+     */
+    public String getCacheStats() {
+        return smartCommandManager.getCacheStats();
+    }
+
+    /**
+     * Clear command cache
+     */
+    public void clearCache() {
+        smartCommandManager.clearCache();
+        log("🗑️ Command cache cleared");
+    }
+
+    /**
+     * Clean old cache entries
+     */
+    public void cleanupCache() {
+        smartCommandManager.cleanupCache();
+        log("🧹 Cache cleaned up");
+    }
+
+    /**
+     * Preload predicted commands based on current context
+     */
+    public void preloadPredictedCommands(String currentContext) {
+        smartCommandManager.preloadPredictedCommands(currentContext);
+        log("🔮 Preloading predicted commands for: " + currentContext);
     }
 
     public Context getContext() {

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-60:12
-INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-60:12
-INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-60:12
-INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-60:12
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-61:12
+INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-61:12
+INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-61:12
+INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:2:1-61:12
 MERGED from [com.google.android.material:material:1.10.0] /home/sudeepkudari/.gradle/caches/transforms-4/b5a76384909525006cfc0d1d01fd07c4/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/sudeepkudari/.gradle/caches/transforms-4/7a5a4e59977f3207d2cefed3a390c409/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/sudeepkudari/.gradle/caches/transforms-4/6b06fff5f464581ffb886afc94c89c14/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -19,6 +19,7 @@ MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/sudeepkudar
 MERGED from [androidx.transition:transition:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/32ce063a83ea8a2d679496e6066edb43/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/sudeepkudari/.gradle/caches/transforms-4/973cacbafa9f7d7791052c36f8754a1e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/sudeepkudari/.gradle/caches/transforms-4/93ede78b23a20ce81a5e5539c7049dea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.ai.client.generativeai:generativeai:0.2.2] /home/sudeepkudari/.gradle/caches/transforms-4/2529dfd562e3d987b40925f7fe6192e0/transformed/jetified-generativeai-0.2.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/sudeepkudari/.gradle/caches/transforms-4/e1c429de0f3f78fa464aa1fe8f2d9907/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /home/sudeepkudari/.gradle/caches/transforms-4/4a6855ceccc097270d1f9f3cb848d132/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] /home/sudeepkudari/.gradle/caches/transforms-4/c8949f242be132250123422df05aa630/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
@@ -100,11 +101,17 @@ ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xm
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:16:22-70
 uses-permission#android.permission.INTERNET
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:17:5-67
+MERGED from [com.google.ai.client.generativeai:generativeai:0.2.2] /home/sudeepkudari/.gradle/caches/transforms-4/2529dfd562e3d987b40925f7fe6192e0/transformed/jetified-generativeai-0.2.2/AndroidManifest.xml:22:5-67
+MERGED from [com.google.ai.client.generativeai:generativeai:0.2.2] /home/sudeepkudari/.gradle/caches/transforms-4/2529dfd562e3d987b40925f7fe6192e0/transformed/jetified-generativeai-0.2.2/AndroidManifest.xml:22:5-67
 	android:name
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:17:22-64
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:18:5-72
+	android:name
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:18:22-69
 application
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:19:5-58:19
-INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:19:5-58:19
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:20:5-59:19
+INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:20:5-59:19
 MERGED from [com.google.android.material:material:1.10.0] /home/sudeepkudari/.gradle/caches/transforms-4/b5a76384909525006cfc0d1d01fd07c4/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /home/sudeepkudari/.gradle/caches/transforms-4/b5a76384909525006cfc0d1d01fd07c4/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/sudeepkudari/.gradle/caches/transforms-4/7a5a4e59977f3207d2cefed3a390c409/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -126,65 +133,65 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/sudeepkudari/.gradle/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:24:9-35
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:25:9-35
 	android:label
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:22:9-41
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:23:9-41
 	android:roundIcon
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:23:9-54
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:24:9-54
 	android:icon
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:21:9-43
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:22:9-43
 	android:allowBackup
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:20:9-35
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:21:9-35
 	android:theme
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:25:9-67
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:26:9-67
 activity#com.assistant.root.ui.activities.MainActivity
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:28:9-36:20
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:9-37:20
 	android:label
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:31:13-38
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:32:13-38
 	android:exported
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:30:13-36
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:31:13-36
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-55
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:30:13-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:32:13-35:29
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:33:13-36:29
 action#android.intent.action.MAIN
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:33:17-69
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:33:25-66
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:17-77
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:27-74
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:35:27-74
 service#com.assistant.root.services.VoiceService
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:39:9-43:58
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:9-44:58
 	android:enabled
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:41:13-35
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:42:13-35
 	android:exported
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:42:13-37
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:43:13-37
 	android:foregroundServiceType
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:43:13-55
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:44:13-55
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-50
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:41:13-50
 service#com.assistant.root.services.AssistantAccessibilityService
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:46:9-56:19
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:9-57:19
 	android:exported
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:49:13-36
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:50:13-36
 	android:permission
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:48:13-79
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:49:13-79
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-67
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:48:13-67
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:50:13-52:29
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:51:13-53:29
 action#android.accessibilityservice.AccessibilityService
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:51:17-92
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:52:17-92
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:51:25-89
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:52:25-89
 meta-data#android.accessibilityservice
-ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:53:13-55:72
+ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:54:13-56:72
 	android:resource
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:55:17-69
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:56:17-69
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:54:17-60
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:55:17-60
 uses-sdk
 INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml
@@ -219,6 +226,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/sudeep
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/sudeepkudari/.gradle/caches/transforms-4/973cacbafa9f7d7791052c36f8754a1e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/sudeepkudari/.gradle/caches/transforms-4/93ede78b23a20ce81a5e5539c7049dea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/sudeepkudari/.gradle/caches/transforms-4/93ede78b23a20ce81a5e5539c7049dea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.ai.client.generativeai:generativeai:0.2.2] /home/sudeepkudari/.gradle/caches/transforms-4/2529dfd562e3d987b40925f7fe6192e0/transformed/jetified-generativeai-0.2.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.ai.client.generativeai:generativeai:0.2.2] /home/sudeepkudari/.gradle/caches/transforms-4/2529dfd562e3d987b40925f7fe6192e0/transformed/jetified-generativeai-0.2.2/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/sudeepkudari/.gradle/caches/transforms-4/e1c429de0f3f78fa464aa1fe8f2d9907/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/sudeepkudari/.gradle/caches/transforms-4/e1c429de0f3f78fa464aa1fe8f2d9907/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/sudeepkudari/.gradle/caches/transforms-4/4a6855ceccc097270d1f9f3cb848d132/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44

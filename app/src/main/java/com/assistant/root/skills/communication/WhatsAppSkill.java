@@ -11,8 +11,50 @@ public class WhatsAppSkill implements Skill {
 
     @Override
     public boolean matches(String normalizedCommand) {
-        return normalizedCommand.contains("whatsapp")
-                && (normalizedCommand.contains("send") || normalizedCommand.contains("message"));
+        // Only match commands that explicitly mention "whatsapp"
+        if (!normalizedCommand.contains("whatsapp")) {
+            return false;
+        }
+
+        // Must also contain send or message
+        if (!normalizedCommand.contains("send") && !normalizedCommand.contains("message")) {
+            return false;
+        }
+
+        // Check if command contains additional actions that should be handled by AI
+        String[] additionalActionKeywords = {
+                " and ", " then ", " after ", " wait ", " delay ",
+                " open ", " close ", " switch ", " turn ", " tap ", " press ",
+                " search ", " find ", " go to ", " click ", " scroll ", " swipe "
+        };
+
+        for (String keyword : additionalActionKeywords) {
+            if (normalizedCommand.contains(keyword)) {
+                // This command has additional actions, let AI handle it
+                return false;
+            }
+        }
+
+        // Check if command is too long (likely complex)
+        if (normalizedCommand.length() > 50) {
+            return false;
+        }
+
+        // Check if command contains multiple apps (likely complex)
+        String[] otherApps = { "youtube", "chrome", "instagram", "facebook", "twitter", "telegram", "gmail" };
+        int appCount = 0;
+        for (String app : otherApps) {
+            if (normalizedCommand.contains(app)) {
+                appCount++;
+            }
+        }
+
+        // If other apps mentioned, let AI handle it
+        if (appCount > 0) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

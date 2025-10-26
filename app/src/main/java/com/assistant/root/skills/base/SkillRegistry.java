@@ -23,13 +23,23 @@ public class SkillRegistry {
         for (Skill s : skills) {
             try {
                 if (s.matches(normalizedCommand)) {
+                    String skillName = s.getClass().getSimpleName();
+                    executor.log("🎯 Using skill: " + skillName);
+
+                    // Update overlay with skill name
+                    if (skillName.equals("AISkill")) {
+                        // AI skill will handle its own overlay updates
+                    } else {
+                        executor.updateOverlay("🎯 " + skillName.replace("Skill", ""));
+                    }
+
                     s.execute(normalizedCommand, executor);
                     return true;
                 }
             } catch (Exception e) {
                 // Skills should not crash the executor; log and continue
-                if (MainActivity.instance != null)
-                    MainActivity.instance.addLog("Skill error: " + e.getMessage());
+                String skillName = s.getClass().getSimpleName();
+                executor.log("❌ Skill error in " + skillName + ": " + e.getMessage());
             }
         }
         return false;

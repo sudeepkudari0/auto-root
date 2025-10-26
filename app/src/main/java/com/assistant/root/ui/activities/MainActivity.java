@@ -160,6 +160,20 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         }
+
+        // Handle contacts permission result
+        if (requestCode == 1001) { // Contacts permission request code
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                addLog("✅ Contacts permission granted!");
+                // Notify CommandExecutor about permission result
+                if (VoiceService.getInstance() != null && VoiceService.getInstance().getCommandExecutor() != null) {
+                    VoiceService.getInstance().getCommandExecutor().onPermissionResult(requestCode, permissions,
+                            grantResults);
+                }
+            } else {
+                addLog("❌ Contacts permission denied - contact features disabled");
+            }
+        }
     }
 
     private void startVoiceService() {
