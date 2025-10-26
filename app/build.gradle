@@ -14,6 +14,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Load API key from local.properties
+        def localProperties = new Properties()
+        def localPropertiesFile = rootProject.file('local.properties')
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.withInputStream { localProperties.load(it) }
+        }
+        
+        buildConfigField "String", "GOOGLE_AI_API_KEY", "\"${localProperties.getProperty('GOOGLE_AI_API_KEY', '')}\""
     }
 
     buildTypes {
@@ -21,6 +30,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    
+    buildFeatures {
+        buildConfig true
     }
 
     compileOptions {

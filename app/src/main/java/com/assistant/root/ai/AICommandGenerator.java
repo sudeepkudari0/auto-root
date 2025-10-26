@@ -42,7 +42,15 @@ public class AICommandGenerator {
                 "gemini-1.0-pro"
         };
 
-        String apiKey = "AIzaSyB7YrGuLqgWO5-o-nLFL27YRdYLJxOlAvw";
+        String apiKey = com.assistant.root.BuildConfig.GOOGLE_AI_API_KEY;
+
+        // Validate API key
+        if (apiKey == null || apiKey.isEmpty()) {
+            Log.e(TAG, "❌ Google AI API key not found! Please add GOOGLE_AI_API_KEY to local.properties");
+            return;
+        }
+
+        Log.d(TAG, "✅ Google AI API key loaded successfully");
 
         for (String modelName : modelNames) {
             try {
