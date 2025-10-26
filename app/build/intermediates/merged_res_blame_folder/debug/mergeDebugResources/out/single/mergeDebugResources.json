@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/layout_overlay_voice_indicator.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/layout/overlay_voice_indicator.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/drawable_assistant_background.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/drawable/assistant_background.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.assistant.root.app-debug-31:/drawable_floating_button_bg.xml.flat",
+        "source": "com.assistant.root.app-main-33:/drawable/floating_button_bg.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/mipmap-xxxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/layout_test_speech_activity.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/layout/test_speech_activity.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/xml_accessibility_service_config.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/xml/accessibility_service_config.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.assistant.root.app-debug-31:/layout_floating_button.xml.flat",
+        "source": "com.assistant.root.app-main-33:/layout/floating_button.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/layout_activity_test_speech.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/layout/activity_test_speech.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/drawable_overlay_background.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/drawable/overlay_background.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/layout_overlay_assistant.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/layout/overlay_assistant.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/drawable_background_drawable.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/drawable/background_drawable.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-debug-31:/drawable_ic_microphone.xml.flat",
+        "source": "/home/sudeepkudari/.gradle/daemon/8.6/com.assistant.root.app-main-33:/drawable/ic_microphone.xml"
+    }
+]

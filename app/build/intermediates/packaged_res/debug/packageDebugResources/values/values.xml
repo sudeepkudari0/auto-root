@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <string name="accessibility_service_description">Enables the voice assistant to perform system-level actions and interact with apps using root access. This service allows you to control your device with voice commands like opening apps, toggling settings, and more.</string>
+    <string name="app_name">Root Voice Assistant</string>
+</resources>

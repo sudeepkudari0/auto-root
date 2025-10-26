@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color ic_launcher_background
+drawable assistant_background
+drawable floating_button_bg
+drawable ic_launcher_foreground
+drawable ic_microphone
+drawable overlay_background
+id btnStartService
+id btnStartTest
+id btnStopService
+id btnStopTest
+id floating_icon
+id ivMicrophone
+id scrollLogs
+id tvAssistantText
+id tvLogs
+id tvOverlayStatus
+id tvStatus
+id tvTestLog
+layout activity_main
+layout activity_test_speech
+layout floating_button
+layout overlay_assistant
+layout overlay_voice_indicator
+mipmap ic_launcher
+mipmap ic_launcher_round
+string accessibility_service_description
+string app_name
+xml accessibility_service_config

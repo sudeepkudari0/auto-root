@@ -1,0 +1,204 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.assistant.root"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Required permissions -->
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:6:5-71
+12-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:6:22-68
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+13-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:7:5-77
+13-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:7:22-74
+14    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+14-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:8:5-88
+14-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:8:22-85
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:9:5-77
+15-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:9:22-74
+16    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+16-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:10:5-78
+16-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:10:22-75
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:11:5-68
+17-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:11:22-65
+18    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+18-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:12:5-76
+18-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:12:22-73
+19    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+19-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:13:5-76
+19-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:13:22-73
+20    <uses-permission android:name="android.permission.BLUETOOTH" />
+20-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:14:5-68
+20-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:14:22-65
+21    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+21-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:15:5-74
+21-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:15:22-71
+22    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+22-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:16:5-73
+22-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:16:22-70
+23    <uses-permission android:name="android.permission.INTERNET" />
+23-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:17:5-67
+23-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:17:22-64
+24
+25    <permission
+25-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+26        android:name="com.assistant.root.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.assistant.root.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:19:5-58:19
+32        android:allowBackup="true"
+32-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:20:9-35
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.12.0] /home/sudeepkudari/.gradle/caches/transforms-4/0e50c364d6fd77b8098bf49d1615b0e9/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:icon="@mipmap/ic_launcher"
+36-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:21:9-43
+37        android:label="@string/app_name"
+37-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:22:9-41
+38        android:roundIcon="@mipmap/ic_launcher_round"
+38-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:23:9-54
+39        android:supportsRtl="true"
+39-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:24:9-35
+40        android:testOnly="true"
+41        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+41-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:25:9-67
+42
+43        <!-- Main Activity -->
+44        <activity
+44-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:28:9-36:20
+45            android:name="com.assistant.root.MainActivity"
+45-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-41
+46            android:exported="true"
+46-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:30:13-36
+47            android:label="Auto Root" >
+47-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:31:13-38
+48            <intent-filter>
+48-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:32:13-35:29
+49                <action android:name="android.intent.action.MAIN" />
+49-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:33:17-69
+49-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:33:25-66
+50
+51                <category android:name="android.intent.category.LAUNCHER" />
+51-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:17-77
+51-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:27-74
+52            </intent-filter>
+53        </activity>
+54
+55        <!-- Foreground Voice Service -->
+56        <service
+56-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:39:9-43:58
+57            android:name="com.assistant.root.VoiceService"
+57-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-41
+58            android:enabled="true"
+58-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:41:13-35
+59            android:exported="false"
+59-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:42:13-37
+60            android:foregroundServiceType="microphone" />
+60-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:43:13-55
+61
+62        <!-- Accessibility Service for advanced features -->
+63        <service
+63-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:46:9-56:19
+64            android:name="com.assistant.root.AssistantAccessibilityService"
+64-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-58
+65            android:exported="true"
+65-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:49:13-36
+66            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+66-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:48:13-79
+67            <intent-filter>
+67-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:50:13-52:29
+68                <action android:name="android.accessibilityservice.AccessibilityService" />
+68-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:51:17-92
+68-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:51:25-89
+69            </intent-filter>
+70
+71            <meta-data
+71-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:53:13-55:72
+72                android:name="android.accessibilityservice"
+72-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:54:17-60
+73                android:resource="@xml/accessibility_service_config" />
+73-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:55:17-69
+74        </service>
+75
+76        <provider
+76-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+77            android:name="androidx.startup.InitializationProvider"
+77-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+78            android:authorities="com.assistant.root.androidx-startup"
+78-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+79            android:exported="false" >
+79-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+80            <meta-data
+80-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+81                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+81-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+82                android:value="androidx.startup" />
+82-->[androidx.emoji2:emoji2:1.2.0] /home/sudeepkudari/.gradle/caches/transforms-4/fc56dba1d1b5f23814e63c621fd26c0b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+83            <meta-data
+83-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/sudeepkudari/.gradle/caches/transforms-4/daaf1888bf290198a4c5b9458bc36c15/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+84                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+84-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/sudeepkudari/.gradle/caches/transforms-4/daaf1888bf290198a4c5b9458bc36c15/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+85                android:value="androidx.startup" />
+85-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/sudeepkudari/.gradle/caches/transforms-4/daaf1888bf290198a4c5b9458bc36c15/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+86            <meta-data
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+87                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+88                android:value="androidx.startup" />
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+89        </provider>
+90
+91        <receiver
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+92            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+93            android:directBootAware="false"
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+94            android:enabled="true"
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+95            android:exported="true"
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+96            android:permission="android.permission.DUMP" >
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+97            <intent-filter>
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+98                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+99            </intent-filter>
+100            <intent-filter>
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+101                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+102            </intent-filter>
+103            <intent-filter>
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+104                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+105            </intent-filter>
+106            <intent-filter>
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+107                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sudeepkudari/.gradle/caches/transforms-4/aebb41e670119090f84d6db6838a09f8/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+108            </intent-filter>
+109        </receiver>
+110    </application>
+111
+112</manifest>
