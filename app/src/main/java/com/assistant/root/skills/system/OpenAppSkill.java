@@ -24,7 +24,40 @@ public class OpenAppSkill implements Skill {
 
     @Override
     public boolean matches(String normalizedCommand) {
-        return normalizedCommand.contains("open ") || normalizedCommand.contains("launch ");
+        // Only match simple "open" commands (2-3 words max)
+        // Don't match complex commands like "open whatsapp and send message to x"
+
+        // Check if it starts with "open" or "launch"
+        if (!normalizedCommand.matches("^(open|launch)\\s+.*")) {
+            return false;
+        }
+
+        // Count words in the command
+        String[] words = normalizedCommand.trim().split("\\s+");
+
+        // Only match if it's 2-3 words (e.g., "open whatsapp", "open google maps")
+        if (words.length > 3) {
+            return false;
+        }
+
+        // Don't match if it contains complex action words
+        String lowerCommand = normalizedCommand.toLowerCase();
+        if (lowerCommand.contains(" and ") ||
+                lowerCommand.contains(" then ") ||
+                lowerCommand.contains(" after ") ||
+                lowerCommand.contains(" send ") ||
+                lowerCommand.contains(" message ") ||
+                lowerCommand.contains(" to ") ||
+                lowerCommand.contains(" saying ") ||
+                lowerCommand.contains(" with ") ||
+                lowerCommand.contains(" search ") ||
+                lowerCommand.contains(" type ") ||
+                lowerCommand.contains(" tap ") ||
+                lowerCommand.contains(" press ")) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -23,6 +23,7 @@ import java.util.List;
 import com.assistant.root.skills.base.Skill;
 import com.assistant.root.skills.base.SkillRegistry;
 import com.assistant.root.skills.communication.WhatsAppSkill;
+import com.assistant.root.skills.communication.WhatsAppContextSkill;
 import com.assistant.root.skills.system.ListAppsSkill;
 import com.assistant.root.skills.system.OpenAppSkill;
 import com.assistant.root.skills.system.SystemAppSkill;
@@ -33,6 +34,8 @@ import com.assistant.root.ai.AICommandGenerator;
 import com.assistant.root.ai.RootCommandExecutor;
 import com.assistant.root.skills.ai.AISkill;
 import com.assistant.root.cache.SmartCommandManager;
+import com.assistant.root.context.ContextAwareCommandSystem;
+import com.assistant.root.context.HybridCommandSystem;
 
 /**
  * CommandExecutor - executes parsed commands either via root shell or Android
@@ -50,6 +53,8 @@ public class CommandExecutor {
     private final AICommandGenerator aiGenerator;
     private final ContactManager contactManager;
     private final SmartCommandManager smartCommandManager;
+    private final ContextAwareCommandSystem contextAwareSystem;
+    private final HybridCommandSystem hybridSystem;
     private boolean isAIProcessing = false;
 
     // Callback interface for overlay updates
@@ -65,10 +70,14 @@ public class CommandExecutor {
         this.aiGenerator = new AICommandGenerator(ctx);
         this.contactManager = new ContactManager(ctx);
         this.smartCommandManager = new SmartCommandManager(ctx);
+        this.contextAwareSystem = new ContextAwareCommandSystem(ctx);
+        this.hybridSystem = new HybridCommandSystem(ctx);
 
         // Register built-in skills. Add more skills by creating classes implementing
         // Skill.
-        // this.skills.register(new OpenAppSkill());
+        this.skills.register(new OpenAppSkill());
+        // this.skills.register(new WhatsAppContextSkill()); // Disabled - using
+        // universal context-aware AI
         // this.skills.register(new WhatsAppSkill()); // Temporarily disabled - let AI
         // handle all messaging
         this.skills.register(new ToggleWiFiSkill());
@@ -97,12 +106,48 @@ public class CommandExecutor {
 
         log("🔍 Processing command: " + commandText);
 
+        // Show current context for every command (async to avoid blocking)
+        showContextAsync();
+
         boolean handled = skills.execute(cmd, this);
         if (!handled) {
             log("⚠️ No skill matched, using raw root execution");
             // Fallback to raw root execution
             executeRoot(commandText);
         }
+    }
+
+    /**
+     * Show context information asynchronously to avoid blocking the main thread
+     */
+    private void showContextAsync() {
+        new Thread(() -> {
+            try {
+                log("🔍 Starting context detection...");
+                String contextInfo = getCurrentContextInfo();
+                if (contextInfo != null && !contextInfo.isEmpty()) {
+                    log("📱 Current Context:\n" + contextInfo);
+
+                    // Show available actions if in a supported app
+                    if (supportsQuickCommands()) {
+                        log("🎯 App supports quick commands, getting available actions...");
+                        String availableActions = getAvailableActions();
+                        if (availableActions != null && !availableActions.isEmpty()) {
+                            log("🎯 Available Actions:\n" + availableActions);
+                        } else {
+                            log("⚠️ No available actions found");
+                        }
+                    } else {
+                        log("ℹ️ App doesn't support quick commands");
+                    }
+                } else {
+                    log("⚠️ Context detection returned null or empty");
+                }
+            } catch (Exception e) {
+                log("❌ Error getting context: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     /**
@@ -412,7 +457,7 @@ public class CommandExecutor {
         isAIProcessing = true;
         updateOverlay("🤖 Processing...");
 
-        // Use SmartCommandManager for caching
+        // Use SmartCommandManager for caching (original working method)
         smartCommandManager.getCommand(userInput, new SmartCommandManager.CommandCallback() {
             @Override
             public void onCommandReady(String command, boolean fromCache) {
@@ -432,6 +477,82 @@ public class CommandExecutor {
                 log("❌ AI Error: " + error);
                 updateOverlay("❌ AI Error");
                 isAIProcessing = false;
+            }
+        });
+    }
+
+    /**
+     * Execute AI command with full context awareness (alternative method)
+     */
+    public void executeContextAwareCommand(String userInput) {
+        log("🧠 Processing context-aware command: " + userInput);
+        isAIProcessing = true;
+        updateOverlay("🧠 Analyzing context...");
+
+        // Get current context info
+        String contextInfo = contextAwareSystem.getCurrentContextInfo();
+        log("📱 Current Context:\n" + contextInfo);
+
+        // Use full context-aware processing
+        contextAwareSystem.quickExecute(userInput, new ContextAwareCommandSystem.SystemCallback() {
+            @Override
+            public void onCommandReady(String command, boolean fromCache, String contextInfo) {
+                if (fromCache) {
+                    log("⚡ Context-aware cache HIT!");
+                    updateOverlay("⚡ Executing cached command...");
+                } else {
+                    log("✅ Context-aware AI Generated Command:\n" + command);
+                    updateOverlay("⚡ Executing commands...");
+                }
+            }
+
+            @Override
+            public void onExecutionProgress(String step) {
+                log("🔄 " + step);
+                updateOverlay("🔄 " + step);
+            }
+
+            @Override
+            public void onExecutionComplete(String result) {
+                log("✅ Context-aware execution completed: " + result);
+                updateOverlay("✅ Done!");
+                isAIProcessing = false;
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ Context-aware execution failed: " + error);
+                updateOverlay("❌ Failed");
+                isAIProcessing = false;
+            }
+        });
+    }
+
+    /**
+     * Execute a command using the new hybrid system (instant patterns + AI
+     * fallback)
+     */
+    public void executeHybridCommand(String userInput) {
+        log("🚀 Using hybrid system for: " + userInput);
+        isAIProcessing = true;
+        updateOverlay("🚀 Processing with hybrid system...");
+
+        hybridSystem.processCommand(userInput, new HybridCommandSystem.SystemCallback() {
+            @Override
+            public void onCommandReady(String command, boolean instant, String source) {
+                log("✅ Hybrid command ready from " + source + ": " + command);
+                updateOverlay("⚡ Executing " + source + " command...");
+                executeRoot(command);
+                isAIProcessing = false;
+            }
+
+            @Override
+            public void onError(String error) {
+                log("❌ Hybrid system error: " + error);
+                updateOverlay("❌ Hybrid system failed");
+                isAIProcessing = false;
+                // Fallback to regular AI
+                executeAICommand(userInput);
             }
         });
     }
@@ -688,6 +809,76 @@ public class CommandExecutor {
     public void preloadPredictedCommands(String currentContext) {
         smartCommandManager.preloadPredictedCommands(currentContext);
         log("🔮 Preloading predicted commands for: " + currentContext);
+    }
+
+    /**
+     * Get current context information
+     */
+    public String getCurrentContextInfo() {
+        return contextAwareSystem.getCurrentContextInfo();
+    }
+
+    /**
+     * Get available actions in current context
+     */
+    public String getAvailableActions() {
+        return contextAwareSystem.getAvailableActions();
+    }
+
+    /**
+     * Get app-specific help
+     */
+    public String getAppHelp() {
+        return contextAwareSystem.getAppHelp();
+    }
+
+    /**
+     * Get common actions for current app
+     */
+    public String[] getCommonActions() {
+        return contextAwareSystem.getCommonActions();
+    }
+
+    /**
+     * Check if current app supports quick commands
+     */
+    public boolean supportsQuickCommands() {
+        return contextAwareSystem.supportsQuickCommands();
+    }
+
+    /**
+     * Get system status
+     */
+    public String getSystemStatus() {
+        return contextAwareSystem.getSystemStatus();
+    }
+
+    /**
+     * Warm up cache for current app
+     */
+    public void warmupCurrentAppCache() {
+        contextAwareSystem.warmupCurrentAppCache();
+        log("🔥 Warming up cache for current app...");
+    }
+
+    /**
+     * Test context detection manually
+     */
+    public void testContextDetection() {
+        log("🧪 Testing context detection...");
+        new Thread(() -> {
+            try {
+                String contextInfo = getCurrentContextInfo();
+                if (contextInfo != null && !contextInfo.isEmpty()) {
+                    log("✅ Context detection successful:\n" + contextInfo);
+                } else {
+                    log("❌ Context detection failed - returned null or empty");
+                }
+            } catch (Exception e) {
+                log("❌ Context detection error: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public Context getContext() {
