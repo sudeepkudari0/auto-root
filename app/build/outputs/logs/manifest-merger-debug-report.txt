@@ -137,14 +137,14 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/sudeepkudari/.gradle/
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:20:9-35
 	android:theme
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:25:9-67
-activity#com.assistant.root.MainActivity
+activity#com.assistant.root.ui.activities.MainActivity
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:28:9-36:20
 	android:label
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:31:13-38
 	android:exported
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-41
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:32:13-35:29
 action#android.intent.action.MAIN
@@ -155,7 +155,7 @@ category#android.intent.category.LAUNCHER
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:17-77
 	android:name
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:34:27-74
-service#com.assistant.root.VoiceService
+service#com.assistant.root.services.VoiceService
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:39:9-43:58
 	android:enabled
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:41:13-35
@@ -164,15 +164,15 @@ ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xm
 	android:foregroundServiceType
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:43:13-55
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-41
-service#com.assistant.root.AssistantAccessibilityService
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-50
+service#com.assistant.root.services.AssistantAccessibilityService
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:46:9-56:19
 	android:exported
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:49:13-36
 	android:permission
 		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:48:13-79
 	android:name
-		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-58
+		ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-67
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
 ADDED from /home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:50:13-52:29
 action#android.accessibilityservice.AccessibilityService

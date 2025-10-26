@@ -80,8 +80,8 @@
 43        <!-- Main Activity -->
 44        <activity
 44-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:28:9-36:20
-45            android:name="com.assistant.root.MainActivity"
-45-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-41
+45            android:name="com.assistant.root.ui.activities.MainActivity"
+45-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:29:13-55
 46            android:exported="true"
 46-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:30:13-36
 47            android:label="Auto Root" >
@@ -101,8 +101,8 @@
 55        <!-- Foreground Voice Service -->
 56        <service
 56-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:39:9-43:58
-57            android:name="com.assistant.root.VoiceService"
-57-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-41
+57            android:name="com.assistant.root.services.VoiceService"
+57-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:40:13-50
 58            android:enabled="true"
 58-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:41:13-35
 59            android:exported="false"
@@ -113,8 +113,8 @@
 62        <!-- Accessibility Service for advanced features -->
 63        <service
 63-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:46:9-56:19
-64            android:name="com.assistant.root.AssistantAccessibilityService"
-64-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-58
+64            android:name="com.assistant.root.services.AssistantAccessibilityService"
+64-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:47:13-67
 65            android:exported="true"
 65-->/home/sudeepkudari/projects/auto-root/app/src/main/AndroidManifest.xml:49:13-36
 66            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
